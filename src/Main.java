@@ -1,7 +1,6 @@
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,8 +9,9 @@ public class Main {
         String[] products = {
                 "Молоко", "Хлеб", "Сыр", "Яйца", "Гречка", "Мука", "Макароны"
         };
-        String index;
-        Set<String> basket = new HashSet<>();
+        int index;
+       
+        ArrayList<String> basket = new ArrayList<>();
         String product;
         System.out.println("Список возможных товаров для покупки");
         for (int i = 0; i < products.length; i++) {
@@ -28,15 +28,17 @@ public class Main {
                 System.out.println("Итого в списке покупок: " + basket.size());
             } else if (operation == 2) {
 
-                for (int k = 0; k < basket.toArray().length; k++) {
-                    index = Integer.toString(k + 1);
+
+                for (int k = 0; k < basket.size(); k++) {
+                    index = k + 1;
                     System.out.println(index + "  " + basket.toArray()[k]);
+
                 }
 
             } else if (operation == 3) {
                 System.out.println("Список покупок: ");
                 for (int j = 0; j < basket.toArray().length; j++) {
-                    index = Integer.toString(j + 1);
+                    index = j + 1;
                     System.out.println(index + "  " + basket.toArray()[j]);
 
                 }
@@ -46,20 +48,20 @@ public class Main {
                 try {
                     int numProduct = Integer.parseInt(input);
                     product = basket.toArray()[numProduct - 1].toString();
-                 
+
                     basket.remove(basket.toArray()[numProduct - 1]);
                     System.out.println("Покупка " + product + " удалена, список покупок: ");
-                    for (int q = 0; q < basket.toArray().length; q++) {
-                        index = Integer.toString(q + 1);
-                        System.out.println(index + basket.toArray()[q]);
+                    for (int q = 0; q < basket.size(); q++) {
+                        index = q + 1;
+                        System.out.println(index + "  " + basket.toArray()[q]);
 
                     }
                 } catch (NumberFormatException exception) {
                     basket.remove(input);
                     System.out.println("Покупка " + input + " удалена, список покупок: ");
-                    for (int n = 0; n < basket.toArray().length; n++) {
-                        index = Integer.toString(n + 1);
-                        System.out.println(index + basket.toArray()[n]);
+                    for (int n = 0; n < basket.size(); n++) {
+                        index = n + 1;
+                        System.out.println(index + "  " + basket.toArray()[n]);
 
                     }
 
